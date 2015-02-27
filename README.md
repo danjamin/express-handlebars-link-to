@@ -1,4 +1,4 @@
-# express-handlebars-link-to
+# express-handlebars-link-to [![Build Status](https://travis-ci.org/danjamin/express-handlebars-link-to.svg?branch=master)](https://travis-ci.org/danjamin/express-handlebars-link-to)
 
 Link-to for handlebars templates in Express JS applications.
 
