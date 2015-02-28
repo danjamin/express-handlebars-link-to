@@ -4,6 +4,7 @@ var router = require('../../models/Router')
 
 var describe = mocha.describe
 var it = mocha.it
+var beforeEach = mocha.beforeEach
 
 describe('Router', function () {
   describe('#resolvePath()', function () {
@@ -64,6 +65,30 @@ describe('Router', function () {
       assert.equal(
         router.resolvePath('/user/:id:,+a', [5]),
         '/user/5:,+a'
+      )
+    })
+  })
+
+  describe('#getPath()', function () {
+    beforeEach(function () {
+      router.reset()
+    })
+
+    it('should resolve static paths as is', function () {
+      router.define('index', '/')
+      assert.equal(router.getPath('index'), '/')
+    })
+
+    it('should handle a simple single param path', function () {
+      router.define('user', '/user/:id')
+      assert.equal(router.getPath('user', 5), '/user/5')
+    })
+
+    it('should handle two params path', function () {
+      router.define('user', '/user/:id/:other')
+      assert.equal(
+        router.getPath('user', 5, 'x'),
+        '/user/5/x'
       )
     })
   })

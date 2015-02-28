@@ -40,12 +40,27 @@ module.exports = {
     return path
   },
 
+  reset: function () {
+    _routes = {}
+    _pathsHash = {}
+    _currentURL = ''
+  },
+
   getRawPath: function (name) {
     return _routes[name]
   },
 
+  getPath: function(name, param1, paramN) {
+    var params = Array.prototype.slice.call(arguments, 1)
+    return this.resolvePath(
+      this.getRawPath(name),
+      params
+    )
+  },
+
   resolvePath: function (path, params) {
     // TODO: warn about too many or too few params
+    // TODO: add cache here!
 
     var resolvedPath = ''
     var currentParamIndex = 0

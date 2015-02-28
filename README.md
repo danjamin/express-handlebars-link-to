@@ -8,7 +8,7 @@ Inspired by Ember JS's [link-to](http://emberjs.com/guides/templates/links/) han
 ## Installation
 
 ```sh
-npm install --save https://github.com/danjamin/express-handlebars-link-to/tarball/v0.1.0
+npm install --save https://github.com/danjamin/express-handlebars-link-to/tarball/v0.1.1
 ```
 
 ## Example usage
@@ -76,4 +76,10 @@ follows:
 {{#link-to 'person' person.id class="cool-stuff" rel="nofollow"}}
   Person {{person.name}}
 {{/link-to}}
+```
+
+In a controller, you can also redirect to a route by name:
+
+```js
+res.redirect(router.getPath('person', person.id))
 ```
